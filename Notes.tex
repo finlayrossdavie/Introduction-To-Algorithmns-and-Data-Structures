@@ -1,0 +1,47 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+
+\title{Introduction To Algorithmns and Data Structures}
+\author{Finlay Ross-Davie }
+\date{January 2024}
+
+
+\begin{document}
+
+
+\maketitle
+\begin{abstract}
+    Semester 2 Notes
+\end{abstract}
+
+\section{Interval Scheduling}
+
+An algorithm is \textbf{greedy} if it builds up a solution in small steps, choosing a decision at each step myopically to optimize some underlying criterion \newline
+
+In the interval scheduling problem, we have a set of requests ${1,2,\cdots,n}$ the $i^th$ request corresponds to an interval of time starting at $s(i)$ and finishing at $f(i)$. A subset of the requests is \textbf{compatible} if no two of them overlap in time, and the goal of this problem is to accept as large a compatible subset as possible. Compatible sets of maximum size will be called \textbf{optimal}. \newline
+
+Three non-optimal greedy solutions to this problem are:
+\begin{itemize}
+    \item Always, select the available request with the minimal start time $s(i)$
+    \item Begin by accepting the request which requires the smallest interval of time ie $f(i) - s(i)$ is as small as possible
+\end{itemize}
+
+An optimal greedy solution to this problem is the select the interval $[s(i), f(i)]$ that has the smallest $f(i)$ (finishes first)
+
+This can be expressed formally as: \newline
+
+\begin{algorithmic}
+    \State Initially let R be the set of all request, and let A be empty
+    \While{R is not yet empty}
+        \State Choose a request $i \in R$ that has the smallest finishing time
+        \State Add request i to A
+        \State Delete all requests from R that are not compatible with request i
+    \EndWhile
+    \State Return the set A as the set of accepted requests 
+    
+\end{algorithmic}
+
+
+\end{document}
